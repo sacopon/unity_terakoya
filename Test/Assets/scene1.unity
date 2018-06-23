@@ -195,6 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 952238549}
   - component: {fileID: 952238548}
+  - component: {fileID: 952238550}
   m_Layer: 0
   m_Name: bonz
   m_TagString: Untagged
@@ -260,3 +261,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &952238550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952238547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 477a33a524deb46d0bbb6062633b82cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
