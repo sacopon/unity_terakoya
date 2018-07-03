@@ -12,11 +12,23 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		// 初期オーブ生成
+		for (int i = 0; i < MAX_ORB; i++) {
+			CreateOrb ();
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void CreateOrb() {
+		GameObject orb = (GameObject)Instantiate (orbPrefab);
+		orb.transform.SetParent (canvasGame.transform, false);
+		orb.transform.localPosition = new Vector3(
+			UnityEngine.Random.Range(-300.0f, 300.0f),
+			UnityEngine.Random.Range(-140.0f, -500.0f)
+		);
 	}
 }
