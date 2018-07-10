@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour {
 	// 定数定義
 	private const int MAX_ORB = 10;	// オーブ最大数
+	private const int RESPAWN_TIME = 5;	// オーブが発生する秒数
 
 	// オブジェクト参照
 	public GameObject orbPrefab;	// オーブプレハブ
@@ -17,12 +19,20 @@ public class GameManager : MonoBehaviour {
 	private int score = 0;			// 現在のスコア
 	private int nextScore = 100;	// レベルアップまでに必要なスコア
 
+	private int currentOrb = 0;		// 現在のオーブ数
+	private DateTime lastDateTime;	// 前回オーブを生成した時間
+
 	// Use this for initialization
 	void Start () {
+		currentOrb = 10;
+
 		// 初期オーブ生成
-		for (int i = 0; i < MAX_ORB; i++) {
+		for (int i = 0; i < currentOrb; i++) {
 			CreateOrb ();
 		}
+
+		// 初期設定
+		lastDateTime = DateTime.UtcNow;
 
 		RefreshScoreText ();
 	}
