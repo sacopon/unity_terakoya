@@ -39,7 +39,16 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (currentOrb < MAX_ORB) {
+			TimeSpan timeSpan = DateTime.UtcNow - lastDateTime;
+
+			if (timeSpan >= TimeSpan.FromSeconds(RESPAWN_TIME)) {
+				while (timeSpan >= TimeSpan.FromSeconds(RESPAWN_TIME)) {
+					CreateNewOrb ();
+					timeSpan -= TimeSpan.FromSeconds(RESPAWN_TIME);
+				}
+			}
+		}
 	}
 
 	// 新しいオーブの生成
