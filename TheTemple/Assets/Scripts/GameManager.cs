@@ -42,7 +42,18 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
-	public void CreateOrb() {
+	// 新しいオーブの生成
+	public void CreateNewOrb () {
+		lastDateTime = DateTime.UtcNow;
+		if (currentOrb >= MAX_ORB) {
+			return;
+		}
+
+		CreateOrb ();
+		currentOrb++;
+	}
+
+	public void CreateOrb () {
 		GameObject orb = (GameObject)Instantiate (orbPrefab);
 		orb.transform.SetParent (canvasGame.transform, false);
 		orb.transform.localPosition = new Vector3(
@@ -55,6 +66,7 @@ public class GameManager : MonoBehaviour {
 	public void GetOrb () {
 		score += 1;
 		RefreshScoreText ();
+		currentOrb--;
 	}
 
 	// スコアテキスト更新
