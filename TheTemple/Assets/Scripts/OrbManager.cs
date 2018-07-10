@@ -13,4 +13,8 @@ public class OrbManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	// オーブ取得
+	public void TouchOrb() {
+	}
 }
