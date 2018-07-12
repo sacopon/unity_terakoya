@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour {
 
 		// 初期設定
 		lastDateTime = DateTime.UtcNow;
+		nextScore = nextScoreTable[templeLevel];
+		imageTemple.GetComponent<TempleManager> ().SetTemplePicture(templeLevel);
+		imageTemple.GetComponent<TempleManager> ().SetTempleScale(score, nextScore);
 
 		RefreshScoreText ();
 	}
