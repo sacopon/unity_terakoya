@@ -45,7 +45,37 @@ public class GameManager : MonoBehaviour {
 
 		RefreshScoreText ();
 	}
-	
+
+	// 寺のレベル管理
+	void TempleLevelUp () {
+		if (score >= nextScore) {
+			if (templeLevel < MAX_LEVEL) {
+				templeLevel++;
+				score = 0;
+
+				TempleLevelUpEffect ();
+
+				nextScore = nextScoreTable [templeLevel];
+				imageTemple.GetComponent<TempleManager> ().SetTemplePicture(templeLevel);
+			}
+		}
+	}
+
+	// レベルアップ時の演出
+	void TempleLevelUpEffect () {
+		GameObject smoke = (GameObject)Instantiate (smokePrefab);
+		smoke.transform.SetParent(canvasGame.transform, false);
+		smoke.transform.SetSiblingIndex (2);
+
+		Destroy (smoke, 0.5f);
+	}
+
+	// 寺が最後まで育った時の演出
+	void ClearEffect () {
+		GameObject kusudama = (GameObject)Instantiate (kusudamaPrefab);
+		kusudama.transform.SetParent (canvasGame.transform, false);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (currentOrb < MAX_ORB) {
@@ -83,7 +113,20 @@ public class GameManager : MonoBehaviour {
 	// オーブ入手
 	public void GetOrb () {
 		score += 1;
+
+		if (score > nextScore) {
+			score = nextScore;
+		}
+
+		TempleLevelUp ();
 		RefreshScoreText ();
+		imageTemple.GetComponent<TempleManager> ().SetTempleScale (score, nextScore);
+
+		// ゲームクリア判定
+		if ((score == nextScore) && (templeLevel == MAX_LEVEL)) {
+			ClearEffect ();
+		}
+
 		currentOrb--;
 	}
 
