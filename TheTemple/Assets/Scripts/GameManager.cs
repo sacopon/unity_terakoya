@@ -108,23 +108,43 @@ public class GameManager : MonoBehaviour {
 			UnityEngine.Random.Range(-300.0f, 300.0f),
 			UnityEngine.Random.Range(-140.0f, -500.0f)
 		);
+
+		// オーブの種類を設定
+		int kind = UnityEngine.Random.Range(0, templeLevel + 1);
+		switch (kind) {
+			case 0:
+				orb.GetComponent<OrbManager> ().SetKind(OrbManager.ORB_KIND.BLUE);
+				break;
+
+			case 1:
+				orb.GetComponent<OrbManager> ().SetKind(OrbManager.ORB_KIND.GREEN);
+				break;
+
+			case 2:
+				orb.GetComponent<OrbManager> ().SetKind(OrbManager.ORB_KIND.PURPLE);
+				break;
+		}
 	}
 
 	// オーブ入手
-	public void GetOrb () {
-		score += 1;
+	public void GetOrb (int getScore) {
+		if (score < nextScore) {
+			score += getScore;
 
-		if (score > nextScore) {
-			score = nextScore;
-		}
+			// レベルアップ値を超えないよう制限
+			if (score > nextScore) {
+				score = nextScore;
+			}
 
-		TempleLevelUp ();
-		RefreshScoreText ();
-		imageTemple.GetComponent<TempleManager> ().SetTempleScale (score, nextScore);
 
-		// ゲームクリア判定
-		if ((score == nextScore) && (templeLevel == MAX_LEVEL)) {
-			ClearEffect ();
+			TempleLevelUp ();
+			RefreshScoreText ();
+			imageTemple.GetComponent<TempleManager> ().SetTempleScale (score, nextScore);
+
+			// ゲームクリア判定
+			if ((score == nextScore) && (templeLevel == MAX_LEVEL)) {
+				ClearEffect ();
+			}
 		}
 
 		currentOrb--;
