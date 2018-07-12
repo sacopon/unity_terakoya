@@ -502,8 +502,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbPrefab: {fileID: 1378077478499812, guid: e5f9cfff1da4a494bb1bffb5f7358e80, type: 2}
+  smokePrefab: {fileID: 1065860177880820, guid: 5615c47f5fba34856897fcf0dca62c66,
+    type: 2}
+  kusudamaPrefab: {fileID: 1395339837787680, guid: 679da28933cf840d58c5f97ea6d2695f,
+    type: 2}
   canvasGame: {fileID: 1632665641}
   textScore: {fileID: 1527254176}
+  imageTemple: {fileID: 589687019}
 --- !u!4 &1170337013
 Transform:
   m_ObjectHideFlags: 0
