@@ -334,6 +334,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6494f77c7a4b5448da748bbdc1e3f604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  templePicture:
+  - {fileID: 21300000, guid: 9e7550ecfd7e44408b2392674d98134e, type: 3}
+  - {fileID: 21300000, guid: 93469df0601544267a726f90db8e0f20, type: 3}
+  - {fileID: 21300000, guid: 06d6b5905fc5548b48ccca0715f03a33, type: 3}
 --- !u!1 &757426823
 GameObject:
   m_ObjectHideFlags: 0
