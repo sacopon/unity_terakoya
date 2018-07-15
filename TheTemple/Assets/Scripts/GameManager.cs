@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour {
 	public GameObject textScore;		// スコアテキスト
 	public GameObject imageTemple;		// お寺
 
+	public AudioClip getScoreSE;		// 効果音:スコアゲット
+	public AudioClip levelUpSE;			// 効果音:レベルアップ
+	public AudioClip clearSE;			// 効果音:クリア
+
 	// メンバ変数
 	private int score = 0;			// 現在のスコア
 	private int nextScore = 10;	// レベルアップまでに必要なスコア
@@ -27,9 +31,13 @@ public class GameManager : MonoBehaviour {
 	private int templeLevel = 0;	// 寺のレベル
 	private DateTime lastDateTime;	// 前回オーブを生成した時間
 	private int[] nextScoreTable = new int[] {10, 100, 1000};	// レベルアップ値
+	private AudioSource audioSource;	// オーディオソース
 
 	// Use this for initialization
 	void Start () {
+		// オーディオソース取得
+		audioSource = this.gameObject.GetComponent<AudioSource> ();
+
 		currentOrb = 10;
 
 		// 初期オーブ生成
@@ -67,6 +75,8 @@ public class GameManager : MonoBehaviour {
 		smoke.transform.SetParent(canvasGame.transform, false);
 		smoke.transform.SetSiblingIndex (2);
 
+		audioSource.PlayOneShot (levelUpSE);
+
 		Destroy (smoke, 0.5f);
 	}
 
@@ -74,6 +84,8 @@ public class GameManager : MonoBehaviour {
 	void ClearEffect () {
 		GameObject kusudama = (GameObject)Instantiate (kusudamaPrefab);
 		kusudama.transform.SetParent (canvasGame.transform, false);
+
+		audioSource.PlayOneShot (clearSE);
 	}
 
 	// Update is called once per frame
@@ -128,6 +140,8 @@ public class GameManager : MonoBehaviour {
 
 	// オーブ入手
 	public void GetOrb (int getScore) {
+		audioSource.PlayOneShot (getScoreSE);
+
 		if (score < nextScore) {
 			score += getScore;
 
