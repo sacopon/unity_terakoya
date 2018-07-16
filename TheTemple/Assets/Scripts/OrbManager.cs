@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class OrbManager : MonoBehaviour {
 
@@ -34,7 +35,10 @@ public class OrbManager : MonoBehaviour {
 		if (Input.GetMouseButton(0) == false) {
 			return;
 		}
+	}
 
+	// オーブアニメ終了後にポイント加算処理をする
+	public void AddOrbPoint() {
 		switch (orbKind) {
 			case ORB_KIND.BLUE:
 				gameManager.GetComponent<GameManager>().GetOrb (1);
@@ -48,7 +52,6 @@ public class OrbManager : MonoBehaviour {
 				gameManager.GetComponent<GameManager>().GetOrb (10);
 				break;
 		}
-
 
 		Destroy(this.gameObject);
 	}
