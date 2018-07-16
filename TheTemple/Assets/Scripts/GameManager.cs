@@ -8,8 +8,14 @@ using System;
 public class GameManager : MonoBehaviour {
 	// 定数定義
 	private const int MAX_ORB = 10;	// オーブ最大数
-	private const int RESPAWN_TIME = 1;	// オーブが発生する秒数
+	private const int RESPAWN_TIME = 5;	// オーブが発生する秒数
 	private const int MAX_LEVEL = 2;	// 最大お寺レベル
+
+	// データセーブ用キー
+	private const string KEY_SCORE = "SCORE";	// スコア
+	private const string KEY_LEVEL = "LEVEL";	// レベル
+	private const string KEY_ORB = "ORB";		// オーブ数
+	private const string KEY_TIME = "TIME";		// 時間
 
 	// オブジェクト参照
 	public GameObject orbPrefab;		// オーブプレハブ
