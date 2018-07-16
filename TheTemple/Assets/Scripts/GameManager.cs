@@ -45,14 +45,26 @@ public class GameManager : MonoBehaviour {
 		// オーディオソース取得
 		audioSource = this.gameObject.GetComponent<AudioSource> ();
 
-		currentOrb = 10;
+		// 初期設定
+		score = PlayerPrefs.GetInt(KEY_SCORE, 0);
+		templeLevel = PlayerPrefs.GetInt(KEY_LEVEL, 0);
+		currentOrb = PlayerPrefs.GetInt(KEY_ORB, 10);
 
 		// 初期オーブ生成
 		for (int i = 0; i < currentOrb; i++) {
 			CreateOrb ();
 		}
 
-		// 初期設定
+		// 時間の復元
+		string time = PlayerPrefs.GetString(KEY_TIME, "");
+		if (time == "") {
+			// 時間がセーブされていない場合は現在時刻を使用
+			lastDateTime = DateTime.UtcNow;
+		} else {
+			long temp = Convert.ToInt64(time);
+			lastDateTime = DateTime.FromBinary(temp);
+		}
+
 		lastDateTime = DateTime.UtcNow;
 		nextScore = nextScoreTable[templeLevel];
 		imageTemple.GetComponent<TempleManager> ().SetTemplePicture(templeLevel);
