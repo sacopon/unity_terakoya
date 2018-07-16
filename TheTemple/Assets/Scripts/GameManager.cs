@@ -118,6 +118,8 @@ public class GameManager : MonoBehaviour {
 
 		CreateOrb ();
 		currentOrb++;
+
+		SaveGameData();
 	}
 
 	public void CreateOrb () {
@@ -179,6 +181,8 @@ public class GameManager : MonoBehaviour {
 		}
 
 		currentOrb--;
+
+		SaveGameData();
 	}
 
 	// スコアテキスト更新
