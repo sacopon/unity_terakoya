@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject canvasGame;		// ゲームキャンバス
 	public GameObject textScore;		// スコアテキスト
 	public GameObject imageTemple;		// お寺
+	public GameObject imageMokugyo;		// 木魚
 
 	public AudioClip getScoreSE;		// 効果音:スコアゲット
 	public AudioClip levelUpSE;			// 効果音:レベルアップ
@@ -141,6 +142,16 @@ public class GameManager : MonoBehaviour {
 	// オーブ入手
 	public void GetOrb (int getScore) {
 		audioSource.PlayOneShot (getScoreSE);
+
+		// 木魚アニメ再生
+		AnimatorStateInfo stateInfo = imageMokugyo.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+		if (stateInfo.fullPathHash == Animator.StringToHash("Base Layer.get@ImageMokugyo")) {
+			// すでに再生中なら先頭から
+			imageMokugyo.GetComponent<Animator>().Play(stateInfo.fullPathHash, 0, 0.0f);
+		}
+		else {
+			imageMokugyo.GetComponent<Animator>().SetTrigger("isGetScore");
+		}
 
 		if (score < nextScore) {
 			score += getScore;

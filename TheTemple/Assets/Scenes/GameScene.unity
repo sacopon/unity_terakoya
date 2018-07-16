@@ -529,6 +529,7 @@ MonoBehaviour:
   canvasGame: {fileID: 1632665641}
   textScore: {fileID: 1527254176}
   imageTemple: {fileID: 589687019}
+  imageMokugyo: {fileID: 2132279388}
   getScoreSE: {fileID: 8300000, guid: cbf5cdf8c8c394c3b94cc04bd2ce1d59, type: 3}
   levelUpSE: {fileID: 8300000, guid: a46c7a973e8284ed6a3140679f8a8697, type: 3}
   clearSE: {fileID: 8300000, guid: 05b4e05ff59c942f6ab780c8da064ba4, type: 3}
