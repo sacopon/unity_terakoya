@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224728108324526730}
   - component: {fileID: 222400856102744868}
   - component: {fileID: 114949283294973842}
+  - component: {fileID: 95876151491602576}
   m_Layer: 5
   m_Name: ImageKusudama
   m_TagString: Untagged
@@ -28,6 +29,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95876151491602576
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1395339837787680}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a588f6dfb51cf47ed979c6f8f1d276e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114949283294973842
 MonoBehaviour:
   m_ObjectHideFlags: 1

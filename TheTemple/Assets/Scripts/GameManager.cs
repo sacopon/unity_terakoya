@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
 	private int currentOrb = 0;		// 現在のオーブ数
 	private int templeLevel = 0;	// 寺のレベル
 	private DateTime lastDateTime;	// 前回オーブを生成した時間
-	private int[] nextScoreTable = new int[] {10, 100, 1000};	// レベルアップ値
+	private int[] nextScoreTable = new int[] {10, 100, 150};	// レベルアップ値
 	private AudioSource audioSource;	// オーディオソース
 
 	// Use this for initialization
