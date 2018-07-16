@@ -993,6 +993,7 @@ GameObject:
   - component: {fileID: 2132279389}
   - component: {fileID: 2132279391}
   - component: {fileID: 2132279390}
+  - component: {fileID: 2132279392}
   m_Layer: 5
   m_Name: ImageMokugyo
   m_TagString: Untagged
@@ -1051,3 +1052,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2132279388}
+--- !u!95 &2132279392
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132279388}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1ceefca238d9494a83c0d0a5e250a81, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
