@@ -185,4 +185,14 @@ public class GameManager : MonoBehaviour {
 	void RefreshScoreText () {
 		textScore.GetComponent<Text>().text = "徳:" + score + " / " + nextScore;
 	}
+
+	// ゲームデータをセーブ
+	void SaveGameData() {
+		PlayerPrefs.SetInt(KEY_SCORE, score);
+		PlayerPrefs.SetInt(KEY_LEVEL, templeLevel);
+		PlayerPrefs.SetInt(KEY_ORB, currentOrb);
+		PlayerPrefs.SetString(KEY_TIME, lastDateTime.ToBinary().ToString());
+
+		PlayerPrefs.Save();
+	}
 }
