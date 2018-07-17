@@ -7,8 +7,8 @@ using System;
 
 public class GameManager : MonoBehaviour {
 	// 定数定義
-	private const int MAX_ORB = 10;	// オーブ最大数
-	private const int RESPAWN_TIME = 5;	// オーブが発生する秒数
+	private const int MAX_ORB = 30;	// オーブ最大数
+	private const int RESPAWN_TIME = 30;	// オーブが発生する秒数
 	private const int MAX_LEVEL = 2;	// 最大お寺レベル
 
 	// データセーブ用キー
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
 	private int currentOrb = 0;		// 現在のオーブ数
 	private int templeLevel = 0;	// 寺のレベル
 	private DateTime lastDateTime;	// 前回オーブを生成した時間
-	private int[] nextScoreTable = new int[] {10, 100, 150};	// レベルアップ値
+	private int[] nextScoreTable = new int[] {100, 1000, 10000};	// レベルアップ値
 	private AudioSource audioSource;	// オーディオソース
 
 	private int numOfOrb;			// まとめて生成するオーブの数
