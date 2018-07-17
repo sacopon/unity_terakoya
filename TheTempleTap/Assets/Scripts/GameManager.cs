@@ -48,24 +48,7 @@ public class GameManager : MonoBehaviour {
 		// 初期設定
 		score = PlayerPrefs.GetInt(KEY_SCORE, 0);
 		templeLevel = PlayerPrefs.GetInt(KEY_LEVEL, 0);
-		currentOrb = PlayerPrefs.GetInt(KEY_ORB, 10);
 
-		// 初期オーブ生成
-		for (int i = 0; i < currentOrb; i++) {
-			CreateOrb ();
-		}
-
-		// 時間の復元
-		string time = PlayerPrefs.GetString(KEY_TIME, "");
-		if (time == "") {
-			// 時間がセーブされていない場合は現在時刻を使用
-			lastDateTime = DateTime.UtcNow;
-		} else {
-			long temp = Convert.ToInt64(time);
-			lastDateTime = DateTime.FromBinary(temp);
-		}
-
-		lastDateTime = DateTime.UtcNow;
 		nextScore = nextScoreTable[templeLevel];
 		imageTemple.GetComponent<TempleManager> ().SetTemplePicture(templeLevel);
 		imageTemple.GetComponent<TempleManager> ().SetTempleScale(score, nextScore);
@@ -109,16 +92,6 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (currentOrb < MAX_ORB) {
-			TimeSpan timeSpan = DateTime.UtcNow - lastDateTime;
-
-			if (timeSpan >= TimeSpan.FromSeconds(RESPAWN_TIME)) {
-				while (timeSpan >= TimeSpan.FromSeconds(RESPAWN_TIME)) {
-					CreateNewOrb ();
-					timeSpan -= TimeSpan.FromSeconds(RESPAWN_TIME);
-				}
-			}
-		}
 	}
 
 	// 新しいオーブの生成
