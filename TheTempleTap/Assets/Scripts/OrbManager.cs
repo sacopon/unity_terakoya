@@ -30,31 +30,27 @@ public class OrbManager : MonoBehaviour {
 		
 	}
 
-	// // オーブ取得
-	// public void TouchOrb() {
-	// 	if (Input.GetMouseButton(0) == false) {
-	// 		return;
-	// 	}
+	// オーブが飛ぶ
+	public void FlyOrb() {
+		RectTransform rect = GetComponent<RectTransform>();
 
-	// 	RectTransform rect = GetComponent<RectTransform>();
+		// オーブの奇跡設定
+		Vector3[] path = {
+			new Vector3(rect.localPosition.x * 4.0f, 300f, 0f),
+			new Vector3(0f, 250f, 0f),
+		};
 
-	// 	// オーブの奇跡設定
-	// 	Vector3[] path = {
-	// 		new Vector3(rect.localPosition.x * 1.5f, 300f, 0f),
-	// 		new Vector3(0f, 150f, 0f),
-	// 	};
+		// DOTween を使ったアニメ生成
+		rect.DOLocalPath(path, 0.5f, PathType.CatmullRom)
+			.SetEase(Ease.OutQuad)
+			.OnComplete(AddOrbPoint);
 
-	// 	// DOTween を使ったアニメ生成
-	// 	rect.DOLocalPath(path, 0.5f, PathType.CatmullRom)
-	// 		.SetEase(Ease.OutQuad)
-	// 		.OnComplete(AddOrbPoint);
-
-	// 	// 同時にサイズも変更
-	// 	rect.DOScale(
-	// 		new Vector3(0.5f, 0.5f, 0f),
-	// 		0.5f
-	// 	);
-	// }
+		// 同時にサイズも変更
+		rect.DOScale(
+			new Vector3(0.5f, 0.5f, 0f),
+			0.5f
+		);
+	}
 
 	// オーブアニメ終了後にポイント加算処理をする
 	public void AddOrbPoint() {
