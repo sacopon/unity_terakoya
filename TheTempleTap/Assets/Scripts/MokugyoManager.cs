@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MokugyoManager : MonoBehaviour {
 
+
+	// オブジェクト参照
+	public GameObject gameManager;	// ゲームマネージャ
+
 	// Use this for initialization
 	void Start () {
 		
@@ -12,5 +16,9 @@ public class MokugyoManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void TapMokugyo() {
+		gameManager.GetComponent<GameManager> ().CreateNewOrb();
 	}
 }
