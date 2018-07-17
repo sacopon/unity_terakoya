@@ -111,8 +111,8 @@ public class GameManager : MonoBehaviour {
 		GameObject orb = (GameObject)Instantiate (orbPrefab);
 		orb.transform.SetParent (canvasGame.transform, false);
 		orb.transform.localPosition = new Vector3(
-			UnityEngine.Random.Range(-300.0f, 300.0f),
-			UnityEngine.Random.Range(-140.0f, -500.0f)
+			UnityEngine.Random.Range(-100.0f, 100.0f),
+			UnityEngine.Random.Range(-300.0f, -450.0f)
 		);
 
 		// オーブの種類を設定
@@ -130,10 +130,9 @@ public class GameManager : MonoBehaviour {
 				orb.GetComponent<OrbManager> ().SetKind(OrbManager.ORB_KIND.PURPLE);
 				break;
 		}
-	}
 
-	// オーブ入手
-	public void GetOrb (int getScore) {
+		orb.GetComponent<OrbManager> ().FlyOrb();
+
 		audioSource.PlayOneShot (getScoreSE);
 
 		// 木魚アニメ再生
@@ -145,6 +144,10 @@ public class GameManager : MonoBehaviour {
 		else {
 			imageMokugyo.GetComponent<Animator>().SetTrigger("isGetScore");
 		}
+	}
+
+	// オーブ入手
+	public void GetOrb (int getScore) {
 
 		if (score < nextScore) {
 			score += getScore;
