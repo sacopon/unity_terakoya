@@ -101,6 +101,35 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	// バックグラウンドへの移行時と復帰時（アプリ起動時も含む）に呼び出される
+	void OnApplicationPause (bool pauseStatus) {
+		if (pauseStatus) {
+			// アプリがバックグラウンドへ移行
+		} else {
+			// バックグラウンドから復帰
+			// 時間の復元
+			string time = PlayerPrefs.GetString(KEY_TIME, "");
+			if (time == "") {
+				lastDateTime = DateTime.UtcNow;
+			} else {
+				long temp = Convert.ToInt64 (time);
+				lastDateTime = DateTime.FromBinary (temp);
+			}
+
+			numOfOrb = 0;
+			// 時間によるオーブ自動生成
+			TimeSpan timeSpan = DateTime.UtcNow - lastDateTime;
+			if (timeSpan >= TimeSpan.FromSeconds (RESPAWN_TIME)) {
+				while (timeSpan > TimeSpan.FromSeconds (RESPAWN_TIME)) {
+					if (numOfOrb < MAX_ORB) {
+						numOfOrb++;
+					}
+					timeSpan -= TimeSpan.FromSeconds (RESPAWN_TIME);
+				}
+			}
+		}
+	}
+
 	// 新しいオーブの生成
 	public void CreateNewOrb () {
 		lastDateTime = DateTime.UtcNow;
