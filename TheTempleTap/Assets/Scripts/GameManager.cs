@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour {
 	private int[] nextScoreTable = new int[] {10, 100, 150};	// レベルアップ値
 	private AudioSource audioSource;	// オーディオソース
 
+	private int numOfOrb;			// まとめて生成するオーブの数
+
 	// Use this for initialization
 	void Start () {
 		// オーディオソース取得
@@ -92,6 +94,11 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		// まとめて生成するオーブがあれば生成
+		while (numOfOrb > 0) {
+			Invoke ("CreateNewOrb", 0.1f * numOfOrb);
+			numOfOrb--;
+		}
 	}
 
 	// 新しいオーブの生成
